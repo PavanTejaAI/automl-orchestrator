@@ -1,0 +1,53 @@
+[project]
+name = "automl-orchestrator"
+version = "0.1.0"
+description = "AutoML Orchestrator - Automated ML pipeline with AI agents, LangGraph, and Granian server"
+readme = "README.md"
+authors = [
+    { name = "Pavan Teja", email = "07pavanteja@gmail.com" },
+    { name = "Abhinav", email = "abhinav.bura@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi",
+    "granian",
+    "minio",
+    "mlflow",
+    "websockets",
+    "python-dotenv",
+    "python-jose[cryptography]",
+    "passlib[bcrypt]",
+    "python-multipart",
+    "asyncpg",
+    "sqlalchemy[asyncio]",
+    "alembic",
+    "email-validator",
+    "pydantic[email]",
+    "cryptography",
+]
+
+[project.scripts]
+automl-orchestrator = "main:main"
+
+[tool.uv]
+package = false
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v -s"
+asyncio_mode = "auto"
