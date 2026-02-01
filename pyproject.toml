@@ -24,6 +24,9 @@ dependencies = [
     "email-validator",
     "pydantic[email]",
     "cryptography",
+    "tavily-python>=0.7.21",
+    "tenacity>=9.1.2",
+    "httpx>=0.28.1",
 ]
 
 [project.scripts]

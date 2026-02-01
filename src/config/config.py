@@ -76,6 +76,14 @@ class Config:
         self.cors_origins = self._get_env_optional(f"{self.ENV_PREFIX}CORS_ORIGINS", "http://localhost:3000,http://localhost:8080").split(",")
         self.rate_limit_per_minute = int(self._get_env_optional(f"{self.ENV_PREFIX}RATE_LIMIT_PER_MINUTE", "60"))
         
+        self.tavily_api_key = self._get_env_optional("TAVILY_API_KEY", "")
+        self.kaggle_api_token = self._get_env_optional("KAGGLE_API_TOKEN", "")
+        self.research_rate_limit_per_minute = int(self._get_env_optional(f"{self.ENV_PREFIX}RESEARCH_RATE_LIMIT_PER_MINUTE", "30"))
+        self.circuit_breaker_threshold = int(self._get_env_optional(f"{self.ENV_PREFIX}CIRCUIT_BREAKER_THRESHOLD", "5"))
+        self.circuit_breaker_timeout = int(self._get_env_optional(f"{self.ENV_PREFIX}CIRCUIT_BREAKER_TIMEOUT", "60"))
+
+
+        
         logger.set_level(self.logger_level)
         
         logger.info(
